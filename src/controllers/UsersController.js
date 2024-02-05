@@ -1,8 +1,9 @@
 const AppError = require("../utils/AppError");
+const knex = require("../database/knex");
 
 class UsersController {
   async create(request, response) {
-    const { name, email } = request.body;
+    const { name, email, password } = request.body;
 
     if (!email) {
       throw new AppError("Deu ruim", 400);
