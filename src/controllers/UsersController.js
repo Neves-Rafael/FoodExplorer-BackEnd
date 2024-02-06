@@ -25,9 +25,10 @@ class UsersController {
 
   async update(request, response) {
     const { name, email, newPassword, oldPassword } = request.body;
-    const user_id = request.user.id;
+    // const user_id = request.user.id;
+    const { id } = request.params;
 
-    const user = await knex("users").where({ id: user_id }).first();
+    const user = await knex("users").where({ id }).first();
 
     if (!user) {
       throw new AppError("Usuário não encontrado!");
@@ -42,7 +43,7 @@ class UsersController {
     user.name = name ?? user.name;
     user.email = email ?? user.email;
 
-    if (newPassword === oldPassword) {
+    if (newPassword && oldPassword === newPassword) {
       throw new AppError("A nova senha deve ser diferente da antiga!");
     }
 
@@ -60,11 +61,11 @@ class UsersController {
 
     user.password = await hash(newPassword, 8);
 
-    await knex("users").where({ id: user_id }).update({
+    await knex("users").where({ id }).update({
       name: user.name,
       email: user.email,
       password: user.password,
-      update_at: knex.fn.now(),
+      updated_at: knex.fn.now(),
     });
 
     return response.status(200).json({
