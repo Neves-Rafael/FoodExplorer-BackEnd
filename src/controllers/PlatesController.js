@@ -30,6 +30,24 @@ class PlatesController {
     await knex("ingredients").insert(ingredientsInsert);
     return response.json({ name, description, category, value, ingredients });
   }
+
+  async index(request, response) {
+    const [plates] = await knex("plates").select();
+
+    return response.json({ plates });
+  }
+
+  async show(request, response) {
+    const { id } = request.params;
+
+    const showPLate = await knex("plates").where({ id }).first();
+
+    if (!showPLate) {
+      throw new AppError("Prato não encontrado");
+    }
+
+    return response.json({ showPLate });
+  }
 }
 
 module.exports = PlatesController;
