@@ -32,7 +32,11 @@ class PlatesController {
   }
 
   async index(request, response) {
-    const plates = await knex("plates");
+    const { title, ingredient } = request.query;
+    const plates = await knex("plates").whereLike("title", `%${title}%`).orderBy("name");
+    // const ingredients = await knex("ingredients");
+
+    console.log({ plates, ingredient });
 
     return response.json({ plates });
   }
@@ -40,13 +44,14 @@ class PlatesController {
   async show(request, response) {
     const { id } = request.params;
 
-    const showPLate = await knex("plates").where({ id }).first();
+    const plate = await knex("plates").where({ id }).first();
+    const ingredients = await knex("ingredients").select(["id", "name"]).where({ plate_id: id }).orderBy("name");
 
-    if (!showPLate) {
+    if (!plate) {
       throw new AppError("Prato não encontrado");
     }
 
-    return response.json({ showPLate });
+    return response.json({ ...plate, ingredients });
   }
 
   async update(request, response) {
