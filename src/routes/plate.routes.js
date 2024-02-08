@@ -8,4 +8,5 @@ platesRoutes.post("/", platesController.create);
 platesRoutes.get("/", platesController.index);
 platesRoutes.get("/:id", platesController.show);
 platesRoutes.put("/:id", platesController.update);
+platesRoutes.delete("/:id", platesController.delete);
 module.exports = platesRoutes;

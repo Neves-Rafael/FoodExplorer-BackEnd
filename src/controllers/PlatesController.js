@@ -32,7 +32,7 @@ class PlatesController {
   }
 
   async index(request, response) {
-    const [plates] = await knex("plates").select();
+    const plates = await knex("plates");
 
     return response.json({ plates });
   }
@@ -86,9 +86,18 @@ class PlatesController {
       description: user.description,
       category: user.category,
       value: user.value,
+      updated_at: new Date(),
     });
 
     return response.json({ enviou: "dale" });
+  }
+
+  async delete(request, response) {
+    const { id } = request.params;
+
+    await knex("plates").where({ id }).delete();
+
+    return response.json({ Message: "Prato excluído! " });
   }
 }
 
