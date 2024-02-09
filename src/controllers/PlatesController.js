@@ -32,13 +32,27 @@ class PlatesController {
   }
 
   async index(request, response) {
-    const { title, ingredient } = request.query;
-    const plates = await knex("plates").whereLike("title", `%${title}%`).orderBy("name");
+    const { name, ingredient } = request.query;
+    const plates = await knex("plates").whereLike("name", `%${name}%`).orderBy("name");
     // const ingredients = await knex("ingredients");
+
+    let showIngredient;
+
+    if (ingredient) {
+      let filterIngredient = ingredient.split(",").map((tag) => tag.trim());
+
+      showIngredient = await knex("ingredients")
+        .select(["plates.id", "plates.description", "ingredients.name"])
+        .whereLike("plates.name", `%${name}%`)
+        .whereIn("ingredients.name", filterIngredient)
+        .innerJoin("plates", "plates.id", "ingredients.plate_id")
+        .orderBy("plates.name");
+      console.log(filterIngredient);
+    }
 
     console.log({ plates, ingredient });
 
-    return response.json({ plates });
+    return response.json({ showIngredient });
   }
 
   async show(request, response) {
