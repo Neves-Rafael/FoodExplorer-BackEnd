@@ -34,28 +34,63 @@ class PlatesController {
   async index(request, response) {
     const { name, ingredient } = request.query;
 
-    let plates;
-    let showIngredient;
-
-    if (name) {
-      plates = await knex("plates").whereLike("name", `%${name}%`).orderBy("name");
-      return response.json({ plates });
-    } else if (ingredient) {
-      let filterIngredient = ingredient.split(",").map((tag) => tag.trim());
-
-      showIngredient = await knex("ingredients")
-        .select(["plates.id", "plates.name", "plates.description", "ingredients.name as ingredient_name"])
-        .whereLike("plates.name", `%${name}%`)
-        .whereIn("ingredients.name", filterIngredient)
-        .innerJoin("plates", "plates.id", "ingredients.plate_id")
-        .orderBy("plates.name");
-
-      return response.json({ showIngredient });
-    }
-
+    const allIngredients = await knex("ingredients");
     const allPlates = await knex("plates");
 
-    return response.json({ allPlates });
+    if (name) {
+      const platesWithName = await knex("plates").whereLike("name", `%${name}%`);
+
+      const platesWithIngredients = platesWithName.map((plate) => {
+        const result = allIngredients.filter((tag) => {
+          return tag.plate_id === plate.id;
+        });
+        return {
+          ...plate,
+          ingredients: result,
+        };
+      });
+      return response.json(platesWithIngredients);
+    }
+
+    if (ingredient) {
+      const separateIngredient = ingredient.split(",");
+
+      const filterPlate = separateIngredient.map((ingredient) => {
+        const filterIngredient = allIngredients.filter((tag) => {
+          return tag.name === ingredient;
+        });
+        return [...filterIngredient];
+      });
+
+      let verifyPlate;
+
+      if (filterPlate[1]) {
+        verifyPlate = [...filterPlate[0], ...filterPlate[1]];
+      } else {
+        verifyPlate = [...filterPlate[0]];
+      }
+
+      const fullResult = verifyPlate.map((plate) => {
+        const allPlatesResult = allPlates.filter((tag) => {
+          return tag.id === plate.plate_id;
+        });
+        return { ...allPlatesResult, ingredient_id: plate.id, ingredient: plate.name };
+      });
+
+      return response.json(fullResult);
+    }
+
+    const allPlatesWithIngredients = allPlates.map((plate) => {
+      const result = allIngredients.filter((tag) => {
+        return tag.plate_id === plate.id;
+      });
+      return {
+        ...plate,
+        ingredients: result,
+      };
+    });
+
+    return response.json(allPlatesWithIngredients);
   }
 
   async show(request, response) {
