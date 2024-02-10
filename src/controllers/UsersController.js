@@ -48,18 +48,18 @@ class UsersController {
     }
 
     if (newPassword && !oldPassword) {
-      throw new AppError(
-        "Você deve informar a senha antiga para definir a nova senha!"
-      );
+      throw new AppError("Você deve informar a senha antiga para definir a nova senha!");
     }
 
-    const checkPassword = await compare(oldPassword, user.password);
+    if (newPassword && oldPassword) {
+      const checkPassword = await compare(oldPassword, user.password);
 
-    if (!checkPassword) {
-      throw new AppError("Senha antiga inválida!");
+      if (!checkPassword) {
+        throw new AppError("Senha antiga inválida!");
+      }
+
+      user.password = await hash(newPassword, 8);
     }
-
-    user.password = await hash(newPassword, 8);
 
     await knex("users").where({ id }).update({
       name: user.name,
