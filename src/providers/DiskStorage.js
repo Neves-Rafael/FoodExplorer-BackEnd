@@ -10,4 +10,18 @@ class DiskStorage {
     );
     return file;
   }
+
+  async deleteFile(file) {
+    const filePath = path.resolve(uploadConfig.UPLOADS_FOLDER, file);
+
+    try {
+      await fs.promises.stat(filePath);
+    } catch (error) {
+      return;
+    }
+
+    await fs.promises.unlink(filePath);
+  }
 }
+
+module.exports = DiskStorage;
