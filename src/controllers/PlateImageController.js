@@ -10,7 +10,6 @@ class PlateImageController {
     const diskStorage = new DiskStorage();
 
     const plate = await knex("plates").where({ id: plate_id }).first();
-    console.log(plate);
 
     if (!plate) {
       throw new AppError("Você não tem permissão!");
