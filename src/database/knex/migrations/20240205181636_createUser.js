@@ -4,7 +4,11 @@ exports.up = (knex) =>
     table.text("name");
     table.text("email");
     table.text("password");
-    table.enum("role", ["admin", "user"]).defaultTo("user");
+    table
+      .enum("role", ["admin", "user"], { useNative: true, enumName: "roles" })
+      .notNullable()
+      .default("user");
+
     table.text("avatar");
     table.timestamp("created_at").defaultTo(knex.fn.now());
     table.timestamp("updated_at").defaultTo(knex.fn.now());

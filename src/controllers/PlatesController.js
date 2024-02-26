@@ -28,7 +28,14 @@ class PlatesController {
     });
 
     await knex("ingredients").insert(ingredientsInsert);
-    return response.json({ name, description, category, value, ingredients });
+    return response.json({
+      name,
+      description,
+      category,
+      value,
+      ingredients,
+      plateId,
+    });
   }
 
   async index(request, response) {
@@ -38,7 +45,10 @@ class PlatesController {
     const allPlates = await knex("plates");
 
     if (name) {
-      const platesWithName = await knex("plates").whereLike("name", `%${name}%`);
+      const platesWithName = await knex("plates").whereLike(
+        "name",
+        `%${name}%`
+      );
 
       const platesWithIngredients = platesWithName.map((plate) => {
         const result = allIngredients.filter((tag) => {
@@ -74,7 +84,11 @@ class PlatesController {
         const allPlatesResult = allPlates.filter((tag) => {
           return tag.id === plate.plate_id;
         });
-        return { ...allPlatesResult, ingredient_id: plate.id, ingredient: plate.name };
+        return {
+          ...allPlatesResult,
+          ingredient_id: plate.id,
+          ingredient: plate.name,
+        };
       });
 
       return response.json(fullResult);
@@ -97,7 +111,10 @@ class PlatesController {
     const { id } = request.params;
 
     const plate = await knex("plates").where({ id }).first();
-    const ingredients = await knex("ingredients").select(["id", "name"]).where({ plate_id: id }).orderBy("name");
+    const ingredients = await knex("ingredients")
+      .select(["id", "name"])
+      .where({ plate_id: id })
+      .orderBy("name");
 
     if (!plate) {
       throw new AppError("Prato não encontrado");
