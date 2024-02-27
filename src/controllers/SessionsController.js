@@ -26,7 +26,16 @@ class SessionsCOntroller {
       expiresIn,
     });
 
-    return response.json({ user, token });
+    response.cookie("token", token, {
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+      maxAge: 1000 * 60 * 60 * 24 * 3,  //3 days
+    })
+
+    user.password = "**********"
+
+    return response.json({ user });
   }
 }
 
