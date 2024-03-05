@@ -5,7 +5,7 @@ class PlatesController {
   async create(request, response) {
     const { name, description, category, value, ingredients } = request.body;
 
-    if (Number(value) <= 0 || !Number(value)) {
+    if (value.length < 1) {
       throw new AppError("Insira um valor válido maior que 0!");
     }
 

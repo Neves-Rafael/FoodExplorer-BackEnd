@@ -9,7 +9,6 @@ exports.up = (knex) =>
       .notNullable()
       .default("user");
 
-    table.text("avatar");
     table.timestamp("created_at").defaultTo(knex.fn.now());
     table.timestamp("updated_at").defaultTo(knex.fn.now());
   });
