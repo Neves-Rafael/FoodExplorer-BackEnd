@@ -134,7 +134,7 @@ class PlatesController {
     }
 
     if (value) {
-      if (Number(value) <= 0 || !Number(value)) {
+      if (value.length < 1) {
         throw new AppError("Insira um valor válido maior que 0!");
       }
     }
