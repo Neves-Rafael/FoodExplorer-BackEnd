@@ -1,0 +1,7 @@
+GET http://localhost:3333/payment
+
+###
+
+PUT http://localhost:3333/payment/qrcode/15
+
+###
