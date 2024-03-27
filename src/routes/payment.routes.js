@@ -7,7 +7,7 @@ const paymentController =  new PaymentController();
 
 paymentRoutes.get("/:id", ensureAuth,paymentController.show);
 paymentRoutes.put("/qrcode/:id", paymentController.execute);
-paymentRoutes.get("/", paymentController.index);
+paymentRoutes.get("/", ensureAuth,paymentController.index);
 paymentRoutes.post("/", ensureAuth, paymentController.create);
 
 module.exports = paymentRoutes;

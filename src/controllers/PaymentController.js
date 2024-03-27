@@ -12,6 +12,18 @@ class PaymentController{
       plates: plate,
       price: price
     }).returning("id");
+    console.log(insertPayment[0].id)
+
+    setTimeout( async()=> {
+      const [verifyStatus] = await knex("payments").where({id: insertPayment[0].id});
+
+      if(verifyStatus.status === "pendente"){
+        await knex("payments").where({id: insertPayment[0].id}).update({
+          status: "cancelado",
+        });
+        console.log("cancelado")
+      }
+    },1000 * 60 * 15); // 15 minutos
 
     return response.json(insertPayment)
   }
@@ -30,15 +42,29 @@ class PaymentController{
   }
 
   async index(request, response){
+    const user_id  = request.user.id;
+    const { role } = request.user;
+    
+    if(role){
+      const searchAllPayments = await knex("payments");
+      return response.json(searchAllPayments)
+    }
 
-    const searchAllPayments = await knex("payments");
-    return response.json(searchAllPayments)
+    const searchAllUserPayments = await knex("payments").where({ user_id: user_id });
+    return response.json(searchAllUserPayments)
   }
 
   async execute(request, response){
     const { id } = request.params;
 
     const [verifyStatus] = await knex("payments").where({id});
+
+    if(verifyStatus.status === "cancelado"){
+      await knex("payments").where({id}).update({
+        status: "cancelado",
+      });
+      return response.json("Tempo para pagamento expirou o pedido foi cancelado.")
+    }
     
     if(verifyStatus.status === "pendente"){
       await knex("payments").where({id}).update({
@@ -48,10 +74,21 @@ class PaymentController{
 
     setTimeout( async () => {
       await knex("payments").where({id}).update({
+        status: "em andamento",
+      });
+    },1000 * 10) //10 segundos
+
+    setTimeout( async () => {
+      await knex("payments").where({id}).update({
+        status: "cozinha",
+      });
+    },1000 * 20) //20 segundos
+
+    setTimeout( async () => {
+      await knex("payments").where({id}).update({
         status: "finalizado",
       });
-    },1000 * 60) //1 minuto
-
+    },1000 * 30) //30 segundos
 
     return response.json(verifyStatus.status)
   }
