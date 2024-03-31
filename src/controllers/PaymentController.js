@@ -45,7 +45,7 @@ class PaymentController{
     const user_id  = request.user.id;
     const { role } = request.user;
     
-    if(role){
+    if(role === "admin"){
       const searchAllPayments = await knex("payments");
       return response.json(searchAllPayments)
     }
