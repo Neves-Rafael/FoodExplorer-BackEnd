@@ -28,6 +28,7 @@ class UsersController {
     const user_id = request.user.id;
 
     const user = await knex("users").where({ id: user_id }).first();
+    // console.log(user.email, email)
 
     if (!user) {
       throw new AppError("Usuário não encontrado!");
@@ -40,7 +41,14 @@ class UsersController {
     }
 
     user.name = name ?? user.name;
-    user.email = email ?? user.email;
+
+    if(email){
+      user.email = email
+    }
+
+    if(name){
+      user.name = name
+    }
 
     if (newPassword && oldPassword === newPassword) {
       throw new AppError("A nova senha deve ser diferente da antiga!");
