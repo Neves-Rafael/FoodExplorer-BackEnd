@@ -30,7 +30,7 @@ class SessionsCOntroller {
       httpOnly: true,
       sameSite: "none",
       secure: true,
-      maxAge: 1000 * 60 * 60 * 24 * 3,  //3 days
+      maxAge: 1000 * 60 * 60 * 24 * 15,  //15 days
     })
 
     user.password = "**********"

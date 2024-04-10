@@ -28,7 +28,6 @@ class UsersController {
     const user_id = request.user.id;
 
     const user = await knex("users").where({ id: user_id }).first();
-    // console.log(user.email, email)
 
     if (!user) {
       throw new AppError("Usuário não encontrado!");
@@ -76,7 +75,8 @@ class UsersController {
     });
 
     return response.status(200).json({
-      message: "Usuário atualizado com sucesso!",
+      name: user.name,
+      email: user.email,
     });
   }
 }
