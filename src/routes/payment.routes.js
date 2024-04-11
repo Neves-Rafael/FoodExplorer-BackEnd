@@ -9,5 +9,6 @@ paymentRoutes.get("/:id", ensureAuth,paymentController.show);
 paymentRoutes.put("/qrcode/:id", paymentController.execute);
 paymentRoutes.get("/", ensureAuth,paymentController.index);
 paymentRoutes.post("/", ensureAuth, paymentController.create);
+paymentRoutes.patch("/:id", ensureAuth, paymentController.update);
 
 module.exports = paymentRoutes;

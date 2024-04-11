@@ -39,7 +39,7 @@ class UsersController {
       throw new AppError("Este email já está em uso, tente novamente!");
     }
 
-    user.name = name ?? user.name;
+    // user.name = name ?? user.name;
 
     if(email){
       user.email = email

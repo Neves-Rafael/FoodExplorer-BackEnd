@@ -68,7 +68,7 @@ class PaymentController{
     
     if(verifyStatus.status === "pendente"){
       await knex("payments").where({id}).update({
-        status: "em andamento",
+        status: "processando",
       });
     }
 
@@ -91,6 +91,21 @@ class PaymentController{
     },1000 * 30) //30 segundos
 
     return response.json(verifyStatus.status)
+  }
+
+  async update(request, response){
+    const { id } = request.params;
+    const { newStatus } = request.body;
+
+    if(!newStatus){
+      return
+    }
+
+    await knex("payments").where({id}).update({
+      status: newStatus,
+    });
+
+    return response.status(200);
   }
 }
 
