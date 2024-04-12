@@ -1,10 +1,10 @@
 const { Router } = require("express");
 const userRoutes = require("./user.routes");
 const platesRoutes = require("./plate.routes");
-const sessionRoutes = require("./sessions.routes");
-const ingredientsRoutes = require("./ingredients.routes");
 const paymentRoutes = require("./payment.routes");
-const favoriteRoutes = require("./favorite.routes")
+const sessionRoutes = require("./sessions.routes");
+const favoriteRoutes = require("./favorite.routes");
+const ingredientsRoutes = require("./ingredients.routes");
 
 const routes = Router();
 

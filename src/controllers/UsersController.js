@@ -39,14 +39,12 @@ class UsersController {
       throw new AppError("Este email já está em uso, tente novamente!");
     }
 
-    // user.name = name ?? user.name;
-
-    if(email){
-      user.email = email
+    if (email) {
+      user.email = email;
     }
 
-    if(name){
-      user.name = name
+    if (name) {
+      user.name = name;
     }
 
     if (newPassword && oldPassword === newPassword) {
@@ -54,7 +52,9 @@ class UsersController {
     }
 
     if (newPassword && !oldPassword) {
-      throw new AppError("Você deve informar a senha antiga para definir a nova senha!");
+      throw new AppError(
+        "Você deve informar a senha antiga para definir a nova senha!"
+      );
     }
 
     if (newPassword && oldPassword) {

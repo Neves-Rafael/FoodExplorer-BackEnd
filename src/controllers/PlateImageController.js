@@ -5,7 +5,6 @@ const DiskStorage = require("../providers/DiskStorage");
 class PlateImageController {
   async update(request, response) {
     const { plate_id } = request.params;
-    //verificar se o usuário é admin
     const imageFilename = request.file.filename;
     const diskStorage = new DiskStorage();
 

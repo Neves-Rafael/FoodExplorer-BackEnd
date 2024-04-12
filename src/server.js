@@ -1,17 +1,22 @@
 require("express-async-errors");
-require("dotenv/config")
+require("dotenv/config");
 const express = require("express");
 const cors = require("cors");
 const routes = require("./routes");
 const AppError = require("./utils/AppError");
 const uploadConfig = require("./configs/upload");
-const cookieParser = require("cookie-parser")
+const cookieParser = require("cookie-parser");
 const app = express();
 
-app.use(cors({
-  origin: ["http://localhost:5173", "http://127.0.0.1:5173/"],
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: [
+      "https://foodexplorer-delivery.netlify.app/",
+      "http://127.0.0.1:5173/",
+    ],
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 app.use(express.json());
 app.use(routes);
@@ -24,8 +29,6 @@ app.use((error, request, response, next) => {
       message: error.message,
     });
   }
-
-  console.log(error);
 
   return response.status(500).json({
     status: "error",
