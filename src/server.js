@@ -15,7 +15,6 @@ app.use(routes);
 app.use("/files", express.static(uploadConfig.UPLOADS_FOLDER));
 app.use(
   cors({
-    origin: "https://foodexplorer-delivery.netlify.app",
     credentials: true,
   })
 );
