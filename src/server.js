@@ -8,16 +8,17 @@ const uploadConfig = require("./configs/upload");
 const cookieParser = require("cookie-parser");
 
 const app = express();
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+  })
+);
 
 app.use(cookieParser());
 app.use(express.json());
 app.use(routes);
 app.use("/files", express.static(uploadConfig.UPLOADS_FOLDER));
-app.use(
-  cors({
-    credentials: true,
-  })
-);
 
 app.use((error, request, response, next) => {
   if (error instanceof AppError) {
