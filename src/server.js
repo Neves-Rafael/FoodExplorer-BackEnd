@@ -6,6 +6,7 @@ const routes = require("./routes");
 const AppError = require("./utils/AppError");
 const uploadConfig = require("./configs/upload");
 const cookieParser = require("cookie-parser");
+
 const app = express();
 
 app.use(cookieParser());
@@ -14,10 +15,7 @@ app.use(routes);
 app.use("/files", express.static(uploadConfig.UPLOADS_FOLDER));
 app.use(
   cors({
-    origin: [
-      "https://foodexplorer-delivery.netlify.app",
-      "http://127.0.0.1:5173/",
-    ],
+    origin: "https://foodexplorer-delivery.netlify.app",
     credentials: true,
   })
 );
