@@ -22,9 +22,9 @@ O usuário irá visualizar todos os pratos cadastrados, adicionar ao carrinho, f
 
 ### **_Pré-requisitos_**
 
-Antes de começar, você vai precisar ter instalado em sua máquina nodejs e uma ferramenta de versionamento como o Git,
-Além disto é bom ter um editor para trabalhar com o código por exemplo VSCode.
-Para fazer testes localmente uma boa opção é o insomnia e para gerenciamento de banco de dados relacionado o Beekeeper
+Antes de começar, você vai precisar ter instalado em sua máquina <a target="_blank">[NodeJs](https://nodejs.org/en) </a> e uma ferramenta de versionamento como o <a target="_blank">[GIT](https://git-scm.com/) </a>,
+Além disto é bom ter um editor para trabalhar com o código por exemplo <a target="_blank">[VSCode](https://code.visualstudio.com/) </a>.
+Para fazer testes localmente uma boa opção é o <a target="_blank">[Insomnia](https://insomnia.rest/) </a> e para gerenciamento de banco de dados relacionado o <a target="_blank">[Beekeeper](https://www.beekeeperstudio.io/) </a>
 
 ### **_Configuração_**
 
@@ -33,13 +33,13 @@ Siga os seguintes passos para configurar e rodar a aplicação localmente:
 - Clone o repositório:
 
   ```bash
-    $ git clone https://github.com/Neves-Rafael/FoodExplorer-BackEnd
+    git clone https://github.com/Neves-Rafael/FoodExplorer-BackEnd
   ```
 
 - Entre no diretório e instale as dependências:
 
   ```bash
-    $npm install
+    npm install
   ```
 
 - Preencha as variáveis seguindo o .env.exemplo:
@@ -53,7 +53,7 @@ Siga os seguintes passos para configurar e rodar a aplicação localmente:
 - Rode o servidor local:
 
   ```bash
-    $ npm run dev
+    npm run dev
   ```
 
 - Caso não ocorra nenhum erro a seguinte mensagem será apresentada:
