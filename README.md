@@ -4,11 +4,11 @@
 <br/>
 <br/>
 
-Aplicação fullstack, utilizando as tecnologias aprendidas durante o curso Explorer, simulando um restaurante fictício de acordo com o layout disponibilizado no Figma.
+O FoodExplorer é uma aplicação fullstack, utilizando as tecnologias aprendidas durante o curso Explorer, simulando um restaurante fictício de acordo com o layout disponibilizado no Figma.
 
 O food explorer possui duas personas: o admin e o usuário;
 
-O admin é a pessoa responsável pelo restaurante, logo, poderá criar, visualizar, editar, apagar um prato e alterar os status de pedidos a qualquer momento. Cada prato deve conter uma imagem, um nome, uma categoria, uma breve descrição, os ingredientes e o seu preço. Ao clicar em adicionar prato, o admin receberá uma mensagem de sucesso e será redirecionado para a página principal.
+O admin é a pessoa responsável pelo restaurante e tem o acesso para criar, visualizar, editar, apagar um prato e alterar os status de pedidos a qualquer momento. Cada prato deve conter uma imagem, nome, categoria, descrição, ingredientes e o seu preço. Ao clicar em adicionar ou editar prato será redirecionado para a página e ao finalizar receberá uma mensagem de sucesso e será redirecionado para a página principal.
 
 O usuário irá visualizar todos os pratos cadastrados, adicionar ao carrinho, fazer um pedido, adicionar aos favoritos, acompanhar seu histórico de pedidos, atualizar seu perfil e quando clicar em um prato, será redirecionado para uma nova tela com informações mais detalhadas sobre ele.
 <br/>
@@ -22,9 +22,9 @@ O usuário irá visualizar todos os pratos cadastrados, adicionar ao carrinho, f
 
 ### **_Pré-requisitos_**
 
-Antes de começar, você vai precisar ter instalado em sua máquina <a target="_blank">[NodeJs](https://nodejs.org/en) </a> e uma ferramenta de versionamento como o <a target="_blank">[GIT](https://git-scm.com/) </a>,
-Além disto é bom ter um editor para trabalhar com o código por exemplo <a target="_blank">[VSCode](https://code.visualstudio.com/) </a>.
-Para fazer testes localmente uma boa opção é o <a target="_blank">[Insomnia](https://insomnia.rest/) </a> e para gerenciamento de banco de dados relacionado o <a target="_blank">[Beekeeper](https://www.beekeeperstudio.io/) </a>
+Antes de começar, você vai precisar ter instalado em sua máquina <a target="_blank">[NodeJs](https://nodejs.org/en) </a>, uma ferramenta de versionamento como o <a target="_blank">[GIT](https://git-scm.com/) </a>.
+Além disto é recomendado um editor de código, por exemplo o<a target="_blank">[VSCode](https://code.visualstudio.com/) </a>.
+Para fazer testes localmente uma boa opção é o <a target="_blank">[Insomnia](https://insomnia.rest/) </a> e para gerenciamento de banco de dados relacional o <a target="_blank">[Beekeeper](https://www.beekeeperstudio.io/) </a>.
 
 ### **_Configuração_**
 
@@ -66,7 +66,7 @@ Siga os seguintes passos para configurar e rodar a aplicação localmente:
 
   `http://localhost:3333`
 
-- Para fazer as requisições utilize utilize o insomnia ou qualquer outro programa de sua preferência.
+- Para fazer as requisições utilize o insomnia ou qualquer outro programa de sua preferência.
   <br/>
   <br/>
 
@@ -130,15 +130,15 @@ A aplicação possui duas personas:
 
 - ### **User**
 
-  Rota para criação de conta com acesso de `usuário` para criar uma conta como administrador adicione ao arquivo `.env` que possui um exemplo de preenchimento o email desejado para liberar acesso.
-
-  ```bash
-  ADMIN_EMAIL=admin@admin.com
-  PORT=3333
-  AUTH_SECRET=a76da876da876$ds654a@7656
-  ```
+  Rota para criação de conta, por padrão é atribuído acesso de `usuário`, para ter acesso a uma conta de administrador adicione ao arquivo `.env` no campo de `ADMIN_EMAIL` o email desejado para ser atribuído como `Administrador`.
 
   `POST("/users")`
+
+  ```bash
+    ADMIN_EMAIL=admin@admin.com
+    PORT=3333
+    AUTH_SECRET=a76da876da876$ds654a@7656
+  ```
 
   Com as seguintes informações:
 
@@ -152,7 +152,7 @@ A aplicação possui duas personas:
 
   `PUT("/users")`
 
-  Nesta rota é feita uma segunda autorização pra verificar se a conta foi criada corretamente.
+  Rota para uma segunda autorização que verificar se a conta foi criada corretamente.
 
   `GET("/users/validated")`
   <br/>
@@ -225,7 +225,7 @@ A aplicação possui duas personas:
 - ✅ Os usuários se autenticam para entrar na aplicação através da tela de login, utilizando autenticação JWT.
 - ✅ Usuário e admin podem fazer uma busca tanto pelo nome do prato quanto pelos ingredientes;
 - ✅ O admin pode fazer upload de imagens para cadastrar os pratos.
-- ✅ Aplicação consome a sua própria API;
+- ✅ Aplicação consome a sua própria API.
   <br/>
   <br/>
 
