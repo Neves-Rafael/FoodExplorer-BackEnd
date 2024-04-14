@@ -1,5 +1,3 @@
-<h1 align="center">FoodExplorer Back-End</h1>
-
 ![Sign up](https://github.com/Neves-Rafael/FoodExplorer-BackEnd/assets/136202919/343527f1-3467-42b1-96a4-169c4edf79c2)
 
 
@@ -23,6 +21,10 @@ O usuário irá visualizar todos os pratos cadastrados, adicionar ao carrinho, f
 <h1 align="center">Instalação</h1>
 
 Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina nodejs e uma ferramenta de versionamento como o Git,
+Além disto é bom ter um editor para trabalhar com o código por exemplo VSCode.
+Para fazer testes localmente uma boa opção é o insominia e para gerenciamento de banco de dados relacionado o Beekeeper
 
 ### _Instalação_
 
@@ -154,47 +156,16 @@ A aplicação possui 2(duas) personas:
 
 ### Requisitos
 
-- ✅Atende a todas as especificações na Descrição da Aplicação
+- ✅ Projeto estruturado, com uma boa organização das pastas.
+- ✅ Os dados do admin, do restaurante e dos usuários serão armazenados em um banco de dados.
+- ✅ Os usuários se autenticam para entrar na aplicação através da tela de login, utilizando autenticação JWT.
+- ✅ Usuário e admin podem fazer uma busca tanto pelo nome do prato quanto pelos ingredientes;
+- ✅ O admin pode fazer upload de imagens para cadastrar os pratos.
+- ✅ A aplicação é responsiva, de acordo com o conceito Mobile First seguindo o modelo do Figma;
+- ✅ A sua aplicação deverá consumir a sua própria API;
 
-Um projeto estruturado, com uma boa organização das pastas, divisão de componentes no front-end, etc.
 
-Os dados do admin, do restaurante e dos usuários serão armazenados em um banco de dados.
-
-Os usuários deverão se autenticar para entrar na aplicação através da tela de login, utilizando autenticação JWT. A autenticação deve ser validada com senha.
-
-Funções, variáveis, classes, arquivos, tabelas e todos os outros elementos do código devem ter nomes significativos, de acordo com as boas práticas no mercado;
-
-Usuário e admin podem fazer uma busca tanto pelo nome do prato quanto pelos ingredientes;
-
-O admin irá fazer upload de imagens para cadastrar os pratos.
-
-A aplicação deve ser responsiva, de acordo com o conceito Mobile First que foi aprendido em aula e seguindo o modelo do Figma;
-
-O repositório deverá conter um README bem detalhado tanto no back-end quanto no front-end com link do deploy, previews e instruções para a execução do projeto.
-
-Use os conceitos aprendidos em aula sobre animações e inclua transições e transformações (entre outros exemplos) para deixar a experiência da aplicação mais fluida.
-
-A sua aplicação deverá consumir a sua própria API;
-
-Faça o deploy da sua aplicação (front-end e back-end)
-
-Atende ao modelo proposto no Figma e contém elementos indicativos de ação e estado
-
-Você pode adicionar quaisquer novas funcionalidades no seu projeto. Se desafie.
-
-O usuário poderá incluir itens no carrinho, clicando no botão incluir. Já a quantidade é controlada pelos botões “-” e “+”.
-
-Ao clicar no botão meu pedido, o usuário será redirecionado para uma tela onde irá ver o seu pedido, a soma e os métodos de pagamento.
-
-O usuário poderá excluir um prato do carrinho e o valor total do pedido deve ser atualizado automaticamente.
-
-O usuário poderá marcar um prato como favorito, basta clicar no coração que aparece ao lado de cada um;
-
-O admin irá visualizar e controlar o status de cada pedido, por um campo do tipo select. Os pedidos irão aparecer em uma tabela ao clicar em Pedidos;
-
-Já que o projeto está em dark mode, você pode aplicar a versão light mode;
-
-<p>Tecnologias</p>
+### Tecnologias
 - NodeJs
 - bcryptjs
 - express
