@@ -1,16 +1,17 @@
 <h1 align="center">FoodExplorer Back-End</h1>
 
-<p>Imagem de introdução</p>
+![Sign up](https://github.com/Neves-Rafael/FoodExplorer-BackEnd/assets/136202919/343527f1-3467-42b1-96a4-169c4edf79c2)
 
-<p>Pt-Br | En-Us</p>
 
-<p align="center">Aplicação fullstack, utilizando as tecnologias aprendidas durante o curso Explorer, simulando um restaurante fictício de acordo com o layout disponibilizado no Figma.
+<p>Português-Br | English-Us</p>
+
+Aplicação fullstack, utilizando as tecnologias aprendidas durante o curso Explorer, simulando um restaurante fictício de acordo com o layout disponibilizado no Figma.
 
 O food explorer possui duas personas: o admin e o usuário;
 
 O admin é a pessoa responsável pelo restaurante, logo, poderá criar, visualizar, editar, apagar um prato e alterar os status de pedidos a qualquer momento. Cada prato deve conter uma imagem, um nome, uma categoria, uma breve descrição, os ingredientes e o seu preço. Ao clicar em adicionar prato, o admin receberá uma mensagem de sucesso e será redirecionado para a página principal;
 
-O usuário irá visualizar todos os pratos cadastrados, adicionar ao carrinho, fazer um pedido, adicionar aos favoritos, acompanhar seu histórico de pedidos, atualizar seu perfil e quando clicar em um prato, será redirecionado para uma nova tela com informações mais detalhadas sobre ele.</p>
+O usuário irá visualizar todos os pratos cadastrados, adicionar ao carrinho, fazer um pedido, adicionar aos favoritos, acompanhar seu histórico de pedidos, atualizar seu perfil e quando clicar em um prato, será redirecionado para uma nova tela com informações mais detalhadas sobre ele.
 <br/>
 
 <p>Imagem completa</p>
@@ -21,7 +22,7 @@ O usuário irá visualizar todos os pratos cadastrados, adicionar ao carrinho, f
 
 <h1 align="center">Instalação</h1>
 
-<p>Pré-requisitos</p>
+Pré-requisitos
 
 ### _Instalação_
 
@@ -44,7 +45,7 @@ Siga os seguintes passos para configurar e rodar a aplicação localmente:
   ```JS
     ADMIN_EMAIL=@admin.com
     PORT=3333
-    AUTH_SECRET=
+    AUTH_SECRET=a76da876da876$ds654a@7656
   ```
 
 - Rode o servidor local:
@@ -98,9 +99,9 @@ A aplicação possui 2(duas) personas:
   - Deletar um prato
   - Atualizar um pedido
 
-- #### **Funcionamento**
+- # **Funcionamento**
 
-  - #### **Fazer login**
+  - ## **Fazer login**
 
     Para algumas requisições, a aplicação espera um token (JWT) no header da requisição, ou seja, o usuário tem que está autenticado.
 
