@@ -1,6 +1,6 @@
 ![Sign up](https://github.com/Neves-Rafael/FoodExplorer-BackEnd/assets/136202919/343527f1-3467-42b1-96a4-169c4edf79c2)
 
-<p align="center">Português-Br | English-Us</p>
+<p align="center">Português-Br |  English-Us</p>
 <br/>
 <br/>
 
@@ -13,20 +13,20 @@ O admin é a pessoa responsável pelo restaurante, logo, poderá criar, visualiz
 O usuário irá visualizar todos os pratos cadastrados, adicionar ao carrinho, fazer um pedido, adicionar aos favoritos, acompanhar seu histórico de pedidos, atualizar seu perfil e quando clicar em um prato, será redirecionado para uma nova tela com informações mais detalhadas sobre ele.
 <br/>
 
-<a>[!Link para o deploy da aplicação](https://foodexplorer-delivery.netlify.app/) </a>
+<a>[Link para o deploy da aplicação](https://foodexplorer-delivery.netlify.app/) </a>
 
 <br/>
 <br/>
 
 <h1 align="center">Instalação</h1>
 
-## **_Pré-requisitos_**
+### **_Pré-requisitos_**
 
 Antes de começar, você vai precisar ter instalado em sua máquina nodejs e uma ferramenta de versionamento como o Git,
 Além disto é bom ter um editor para trabalhar com o código por exemplo VSCode.
 Para fazer testes localmente uma boa opção é o insomnia e para gerenciamento de banco de dados relacionado o Beekeeper
 
-## **_Configuração_**
+### **_Configuração_**
 
 Siga os seguintes passos para configurar e rodar a aplicação localmente:
 
@@ -105,7 +105,7 @@ A aplicação possui 2(duas) personas:
 
 <h1 align="center">Funcionamento</h1>
 
-- ## **Fazer login**
+- ### **Fazer login**
 
   Para algumas requisições, a aplicação espera um token (JWT) no header da requisição, ou seja, o usuário tem que está autenticado.
 
@@ -120,13 +120,13 @@ A aplicação possui 2(duas) personas:
    "password": "exemplo123"
   ```
 
-  Se tudo estiver correto será liberado acesso para a aplicação
+  Se tudo estiver correto será liberado acesso para a aplicação.
   <br/>
   <br/>
 
-  - ## **User**
+- ### **User**
 
-  O usuário que deseja criar uma conta precisa fazer uma requisição:
+  Rota para criação de conta com acesso de `usuário` para criar uma conta como administrador adicione ao arquivo `.env` que possui um exemplo de preenchimento o email desejado para liberar acesso.
 
   `POST("/users")`
 
@@ -138,74 +138,92 @@ A aplicação possui 2(duas) personas:
    "password": "exemplo123"
   ```
 
-  Se tudo estiver correto a conta será criada.
-
-  Após já possuir uma conta é possível atualizar:
+  Rota para atualização da conta
 
   `PUT("/users")`
 
   Nesta rota é feita uma segunda autorização pra verificar se a conta foi criada corretamente.
 
   `GET("/users/validated")`
+  <br/>
+  <br/>
 
-  - ## **Plate**
+- ### **Plate**
 
   As seguintes rotas são para visualização de todos os pratos ou pratos específicos selecionados.
 
   `GET("/plates")`
+
   `GET("/plates/:id")`
 
   Para o admin ele possui as seguintes rotas de criação, exclusão e atualização dos pratos.
 
-  `POST("/plates")` admin require
-  `PUT("/plates/:id")` admin require
-  `DELETE("/plates/:id")` admin require
-  `PATCH("/plates/:id")` admin require
+  `POST("/plates")` `admin require`
 
-- ## **Pagamento**
+  `PUT("/plates/:id")` `admin require`
 
-  Essa rota é para a criação de um pedido, com uma duração de 15 minutos para pagamento, que é ativado com a rota seguinte.
+  `DELETE("/plates/:id")` `admin require`
+
+  `PATCH("/plates/:id")` `admin require`
+  <br/>
+  <br/>
+
+- ### **Pagamento**
+
+  Rota para a criação de um pedido, com uma duração de 15 minutos para pagamento, que é ativado com a rota seguinte.
+
   `POST("/payment")`
 
-  Essa rota pode ser acessada para um fazer um "pagamento" ficticio que atualiza o status do pedido
+  Pota para um fazer um "pagamento" fictício que atualiza o status do pedido.
+
   `PUT("/payment/qrcode/:id")`
 
   As seguintes rotas são para visualização de todos os pedidos daquele usuário e para pedidos específicos.
+
   `GET("/payment")`
+
   `GET("/payment/:id")`
 
-  O admin nessa rota consegue atualizar o status de qualquer pedido existente
-  `PATCH("/payment/:id")` admin require
+  Rota que o admin consegue atualizar o status de qualquer pedido existente.
 
-  - ## **Ingredientes**
+  `PATCH("/payment/:id")` `admin require`
+  <br/>
+  <br/>
 
-  Rota para exibir os ingredients
+- ### **Ingredientes**
+
+  Rota para exibir os ingredients.
+
   `GET("/ingredients")`
+  <br/>
+  <br/>
 
-  - ## **Favoritos**
+- ### **Favoritos**
 
-  Rotas para adição do prato aos favoritos e para visualização de todos os pratos adicionados
+  Rotas para adição do prato aos favoritos e para visualização de todos os pratos adicionados.
 
   `POST("/favorites")`
+
   `GET("/favorites")`
 
 <br/>
 <br/>
-<br/>
 
-# Requisitos
+<h1 align="center">Requisitos</h1>
 
 - ✅ Projeto estruturado, com uma boa organização das pastas.
 - ✅ Os dados do admin, do restaurante e dos usuários serão armazenados em um banco de dados.
 - ✅ Os usuários se autenticam para entrar na aplicação através da tela de login, utilizando autenticação JWT.
 - ✅ Usuário e admin podem fazer uma busca tanto pelo nome do prato quanto pelos ingredientes;
 - ✅ O admin pode fazer upload de imagens para cadastrar os pratos.
-- ✅ A aplicação é responsiva, de acordo com o conceito Mobile First seguindo o modelo do Figma;
-- ✅ A sua aplicação deverá consumir a sua própria API;
+- ✅ Aplicação consome a sua própria API;
+  <br/>
+  <br/>
 
-# Tecnologias
+<h1 align="center">Tecnologias e Licença</h1>
 
 <p align="center"> - NodeJs - bcryptjs - express - knex - Multer - SQLite - PM2 - JWT</p>
+<br/>
 
 <p align="center"> Uso de Licença MIT: Essa licença permite o uso, modificação e distribuição do software sem restrições. </p>
 <br/>
