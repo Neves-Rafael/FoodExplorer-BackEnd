@@ -8,17 +8,17 @@ Aplicação fullstack, utilizando as tecnologias aprendidas durante o curso Expl
 
 O food explorer possui duas personas: o admin e o usuário;
 
-O admin é a pessoa responsável pelo restaurante, logo, poderá criar, visualizar, editar, apagar um prato e alterar os status de pedidos a qualquer momento. Cada prato deve conter uma imagem, um nome, uma categoria, uma breve descrição, os ingredientes e o seu preço. Ao clicar em adicionar prato, o admin receberá uma mensagem de sucesso e será redirecionado para a página principal;
+O admin é a pessoa responsável pelo restaurante, logo, poderá criar, visualizar, editar, apagar um prato e alterar os status de pedidos a qualquer momento. Cada prato deve conter uma imagem, um nome, uma categoria, uma breve descrição, os ingredientes e o seu preço. Ao clicar em adicionar prato, o admin receberá uma mensagem de sucesso e será redirecionado para a página principal.
 
 O usuário irá visualizar todos os pratos cadastrados, adicionar ao carrinho, fazer um pedido, adicionar aos favoritos, acompanhar seu histórico de pedidos, atualizar seu perfil e quando clicar em um prato, será redirecionado para uma nova tela com informações mais detalhadas sobre ele.
 <br/>
 
-<a>[Link para o deploy da aplicação](https://foodexplorer-delivery.netlify.app/) </a>
+<a target="_blank">[Link para o deploy da aplicação](https://foodexplorer-delivery.netlify.app/) </a>
 
 <br/>
 <br/>
 
-<h1 align="center">Instalação</h1>
+<h1 align="center">💻 Instalação</h1>
 
 ### **_Pré-requisitos_**
 
@@ -33,7 +33,7 @@ Siga os seguintes passos para configurar e rodar a aplicação localmente:
 - Clone o repositório:
 
   ```bash
-    $git clone https://github.com/Neves-Rafael/FoodExplorer-BackEnd
+    $ git clone https://github.com/Neves-Rafael/FoodExplorer-BackEnd
   ```
 
 - Entre no diretório e instale as dependências:
@@ -44,8 +44,8 @@ Siga os seguintes passos para configurar e rodar a aplicação localmente:
 
 - Preencha as variáveis seguindo o .env.exemplo:
 
-  ```JS
-    ADMIN_EMAIL=@admin.com
+  ```bash
+    ADMIN_EMAIL=admin@admin.com
     PORT=3333
     AUTH_SECRET=a76da876da876$ds654a@7656
   ```
@@ -53,7 +53,7 @@ Siga os seguintes passos para configurar e rodar a aplicação localmente:
 - Rode o servidor local:
 
   ```bash
-    $npm run dev
+    $ npm run dev
   ```
 
 - Caso não ocorra nenhum erro a seguinte mensagem será apresentada:
@@ -70,9 +70,9 @@ Siga os seguintes passos para configurar e rodar a aplicação localmente:
   <br/>
   <br/>
 
-<h1 align="center">Recursos</h1>
+<h1 align="center">🔧 Recursos</h1>
 
-A aplicação possui 2(duas) personas:
+A aplicação possui duas personas:
 
 - Cliente:
 
@@ -87,6 +87,8 @@ A aplicação possui 2(duas) personas:
   - Acessar status do pedido
   - Atualizar informações da conta
   - Acessar página com informações sobre o restaurante
+    <br/>
+    <br/>
 
 - Administrador:
 
@@ -102,8 +104,10 @@ A aplicação possui 2(duas) personas:
   - Atualizar um prato
   - Deletar um prato
   - Atualizar um pedido
+    <br/>
+    <br/>
 
-<h1 align="center">Funcionamento</h1>
+<h1 align="center">📑 Funcionamento</h1>
 
 - ### **Fazer login**
 
@@ -127,6 +131,12 @@ A aplicação possui 2(duas) personas:
 - ### **User**
 
   Rota para criação de conta com acesso de `usuário` para criar uma conta como administrador adicione ao arquivo `.env` que possui um exemplo de preenchimento o email desejado para liberar acesso.
+
+  ```bash
+  ADMIN_EMAIL=admin@admin.com
+  PORT=3333
+  AUTH_SECRET=a76da876da876$ds654a@7656
+  ```
 
   `POST("/users")`
 
@@ -207,9 +217,8 @@ A aplicação possui 2(duas) personas:
   `GET("/favorites")`
 
 <br/>
-<br/>
 
-<h1 align="center">Requisitos</h1>
+<h1 align="center">🗂️ Requisitos</h1>
 
 - ✅ Projeto estruturado, com uma boa organização das pastas.
 - ✅ Os dados do admin, do restaurante e dos usuários serão armazenados em um banco de dados.
@@ -220,7 +229,7 @@ A aplicação possui 2(duas) personas:
   <br/>
   <br/>
 
-<h1 align="center">Tecnologias e Licença</h1>
+<h1 align="center">📊 Tecnologias e Licença</h1>
 
 <p align="center"> - NodeJs - bcryptjs - express - knex - Multer - SQLite - PM2 - JWT</p>
 <br/>

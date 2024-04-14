@@ -14,6 +14,16 @@ class UsersController {
 
     const hashPassword = await hash(password, 8);
 
+    if (process.env.ADMIN_EMAIL === email) {
+      await knex("users").insert({
+        name,
+        role: "admin",
+        email,
+        password: hashPassword,
+      });
+      return response.json({ message: "Usuário criado com sucesso!" });
+    }
+
     await knex("users").insert({
       name,
       email,
