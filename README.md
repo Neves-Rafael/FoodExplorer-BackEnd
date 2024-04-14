@@ -1,7 +1,8 @@
 ![Sign up](https://github.com/Neves-Rafael/FoodExplorer-BackEnd/assets/136202919/343527f1-3467-42b1-96a4-169c4edf79c2)
 
-
-<p>Português-Br | English-Us</p>
+<p align="center">Português-Br | English-Us</p>
+<br/>
+<br/>
 
 Aplicação fullstack, utilizando as tecnologias aprendidas durante o curso Explorer, simulando um restaurante fictício de acordo com o layout disponibilizado no Figma.
 
@@ -12,21 +13,20 @@ O admin é a pessoa responsável pelo restaurante, logo, poderá criar, visualiz
 O usuário irá visualizar todos os pratos cadastrados, adicionar ao carrinho, fazer um pedido, adicionar aos favoritos, acompanhar seu histórico de pedidos, atualizar seu perfil e quando clicar em um prato, será redirecionado para uma nova tela com informações mais detalhadas sobre ele.
 <br/>
 
-<p>Imagem completa</p>
+<a>[!Link para o deploy da aplicação](https://foodexplorer-delivery.netlify.app/) </a>
 
-<h3 align="center">Link para Front-end repositório</h3>
 <br/>
 <br/>
 
 <h1 align="center">Instalação</h1>
 
-Pré-requisitos
+## **_Pré-requisitos_**
 
 Antes de começar, você vai precisar ter instalado em sua máquina nodejs e uma ferramenta de versionamento como o Git,
 Além disto é bom ter um editor para trabalhar com o código por exemplo VSCode.
-Para fazer testes localmente uma boa opção é o insominia e para gerenciamento de banco de dados relacionado o Beekeeper
+Para fazer testes localmente uma boa opção é o insomnia e para gerenciamento de banco de dados relacionado o Beekeeper
 
-### _Instalação_
+## **_Configuração_**
 
 Siga os seguintes passos para configurar e rodar a aplicação localmente:
 
@@ -62,13 +62,15 @@ Siga os seguintes passos para configurar e rodar a aplicação localmente:
     Server is running on port 3333.
   ```
 
-- Para utilizar todo dos recursos desta API, acesse o local host com a porta adicionada no .env:
+- Para utilizar todo dos recursos desta API, acesse o localhost com a porta adicionada no .env:
 
   `http://localhost:3333`
 
 - Para fazer as requisições utilize utilize o insomnia ou qualquer outro programa de sua preferência.
+  <br/>
+  <br/>
 
-### _Recursos_
+<h1 align="center">Recursos</h1>
 
 A aplicação possui 2(duas) personas:
 
@@ -101,60 +103,97 @@ A aplicação possui 2(duas) personas:
   - Deletar um prato
   - Atualizar um pedido
 
-- # **Funcionamento**
+<h1 align="center">Funcionamento</h1>
 
-  - ## **Fazer login**
+- ## **Fazer login**
 
-    Para algumas requisições, a aplicação espera um token (JWT) no header da requisição, ou seja, o usuário tem que está autenticado.
+  Para algumas requisições, a aplicação espera um token (JWT) no header da requisição, ou seja, o usuário tem que está autenticado.
 
-    Para gerar um token e, basta fazer uma requisição:
+  Para gerar um token basta fazer uma requisição:
 
-    `POST("/sessions")`
+  `POST("/sessions")`
 
-    Com as seguintes informações:
+  Com as seguintes informações:
 
-    ```
-     "email": "exemplo@email.com",
-     "password": "exemplo123"
-    ```
+  ```
+   "email": "exemplo@email.com",
+   "password": "exemplo123"
+  ```
 
-    Se tudo estiver correto será liberado acesso para a aplicação
+  Se tudo estiver correto será liberado acesso para a aplicação
+  <br/>
+  <br/>
 
-    - #### **User**
+  - ## **User**
 
-    `POST("/user")`
-    `PUT("/user")`
-    `GET("/user/validated")`
+  O usuário que deseja criar uma conta precisa fazer uma requisição:
 
-    - #### **Plate**
+  `POST("/users")`
 
-    `GET("/plate")`
-    `GET("/plate/:id")`
+  Com as seguintes informações:
 
-    `POST("/plate")` admin require
-    `PUT("/plate/:id")` admin require
-    `DELETE("/plate/:id")` admin require
-    `PATCH("/plate/:id")` admin require
+  ```
+   "nome": "Exemplo nome"
+   "email": "exemplo@email.com",
+   "password": "exemplo123"
+  ```
 
-- #### **Pagamento**
+  Se tudo estiver correto a conta será criada.
 
+  Após já possuir uma conta é possível atualizar:
+
+  `PUT("/users")`
+
+  Nesta rota é feita uma segunda autorização pra verificar se a conta foi criada corretamente.
+
+  `GET("/users/validated")`
+
+  - ## **Plate**
+
+  As seguintes rotas são para visualização de todos os pratos ou pratos específicos selecionados.
+
+  `GET("/plates")`
+  `GET("/plates/:id")`
+
+  Para o admin ele possui as seguintes rotas de criação, exclusão e atualização dos pratos.
+
+  `POST("/plates")` admin require
+  `PUT("/plates/:id")` admin require
+  `DELETE("/plates/:id")` admin require
+  `PATCH("/plates/:id")` admin require
+
+- ## **Pagamento**
+
+  Essa rota é para a criação de um pedido, com uma duração de 15 minutos para pagamento, que é ativado com a rota seguinte.
+  `POST("/payment")`
+
+  Essa rota pode ser acessada para um fazer um "pagamento" ficticio que atualiza o status do pedido
+  `PUT("/payment/qrcode/:id")`
+
+  As seguintes rotas são para visualização de todos os pedidos daquele usuário e para pedidos específicos.
   `GET("/payment")`
   `GET("/payment/:id")`
 
-  `POST("/payment")` admin require
-  `PUT("/payment/qrcode/:id")` admin require
+  O admin nessa rota consegue atualizar o status de qualquer pedido existente
   `PATCH("/payment/:id")` admin require
 
-  - #### **Ingredientes**
+  - ## **Ingredientes**
 
+  Rota para exibir os ingredients
   `GET("/ingredients")`
 
-  - #### **Favoritos**
+  - ## **Favoritos**
 
-  `GET("/favorites")`
+  Rotas para adição do prato aos favoritos e para visualização de todos os pratos adicionados
+
   `POST("/favorites")`
+  `GET("/favorites")`
 
-### Requisitos
+<br/>
+<br/>
+<br/>
+
+# Requisitos
 
 - ✅ Projeto estruturado, com uma boa organização das pastas.
 - ✅ Os dados do admin, do restaurante e dos usuários serão armazenados em um banco de dados.
@@ -164,18 +203,11 @@ A aplicação possui 2(duas) personas:
 - ✅ A aplicação é responsiva, de acordo com o conceito Mobile First seguindo o modelo do Figma;
 - ✅ A sua aplicação deverá consumir a sua própria API;
 
+# Tecnologias
 
-### Tecnologias
-- NodeJs
-- bcryptjs
-- express
-- knex
-- Multer
-- SQLite
-- PM2
-- JWT
+<p align="center"> - NodeJs - bcryptjs - express - knex - Multer - SQLite - PM2 - JWT</p>
 
-Uso de Licença: MIT;
-A licença MIT permite o uso, modificação e distribuição do software sem restrições.
+<p align="center"> Uso de Licença MIT: Essa licença permite o uso, modificação e distribuição do software sem restrições. </p>
+<br/>
 
 <p align="center">Feito com ❤️ por Rafael Neves 👋🏽 <a href="https://www.linkedin.com/in/rafael-neves-profile/">Entre em Contato</a></p>
