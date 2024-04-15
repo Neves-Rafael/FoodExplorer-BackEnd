@@ -1,9 +1,5 @@
 ![Sign up](https://github.com/Neves-Rafael/FoodExplorer-BackEnd/assets/136202919/343527f1-3467-42b1-96a4-169c4edf79c2)
 
-<p align="center">Português-Br |  English-Us</p>
-<br/>
-<br/>
-
 O FoodExplorer é uma aplicação fullstack, utilizando as tecnologias aprendidas durante o curso Explorer, simulando um restaurante fictício de acordo com o layout disponibilizado no Figma.
 
 O food explorer possui duas personas: o admin e o usuário;
