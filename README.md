@@ -9,7 +9,7 @@ O admin é a pessoa responsável pelo restaurante e tem o acesso para criar, vis
 O usuário irá visualizar todos os pratos cadastrados, adicionar ao carrinho, fazer um pedido, adicionar aos favoritos, acompanhar seu histórico de pedidos, atualizar seu perfil e quando clicar em um prato, será redirecionado para uma nova tela com informações mais detalhadas sobre ele.
 <br/>
 
-<a target="_blank">[Link para o deploy da aplicação](https://foodexplorer-delivery.netlify.app/) </a>
+<a target="_blank">[Link para o deploy da aplicação](https://foodexplorer-delivery.netlify.app/) </a> <br/>
 <a target="_blank">[Link para o Front-End](https://github.com/Neves-Rafael/FoodExplorer-FrontEnd) </a>
 
 <br/>
